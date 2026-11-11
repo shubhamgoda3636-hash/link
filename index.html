@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>21-Button Phone Launchpad</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100dvh;
+      overflow: hidden;
+      background-color: #0f172a;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Phone container */
+    .phone-wrapper {
+      width: 100%;
+      max-width: 420px;
+      height: 100dvh;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2px;
+    }
+
+    .header h1 {
+      font-size: 14px;
+      font-weight: 700;
+      color: #e2e8f0;
+      letter-spacing: 0.3px;
+    }
+
+    .header span {
+      font-size: 11px;
+      font-weight: 600;
+      color: #94a3b8;
+      background: #1e293b;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #334155;
+    }
+
+    /* Strict 3x7 Grid with 42px row height and zero scroll */
+    .grid-3x7 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(7, 42px);
+      gap: 8px;
+      width: 100%;
+    }
+
+    /* Compact 42px Redirect Button */
+    .btn {
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      background: linear-gradient(180deg, #1e293b 0%, #172033 100%);
+      color: #f1f5f9;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 10px;
+      border: 1px solid #334155;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      user-select: none;
+      transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn:hover {
+      border-color: #6366f1;
+      background: #1e293b;
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+      background: #312e81;
+      border-color: #818cf8;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="phone-wrapper">
+    <div class="header">
+      <h1>Quick Links</h1>
+      <span>3 × 7</span>
+    </div>
+
+    <!-- 21 Buttons Container -->
+    <div id="buttonGrid" class="grid-3x7"></div>
+  </main>
+
+  <script>
+    // Edit your 21 button names and destination links here:
+    const links = [
+      { name: "1. Google",        url: "https://www.google.com" },
+      { name: "2. YouTube",       url: "https://www.youtube.com" },
+      { name: "3. GitHub",        url: "https://github.com" },
+      { name: "4. Wikipedia",     url: "https://www.wikipedia.org" },
+      { name: "5. ChatGPT",       url: "https://chatgpt.com" },
+      { name: "6. StackOverflow", url: "https://stackoverflow.com" },
+      { name: "7. Reddit",        url: "https://www.reddit.com" },
+      { name: "8. Gmail",         url: "https://mail.google.com" },
+      { name: "9. Maps",          url: "https://maps.google.com" },
+      { name: "10. LinkedIn",     url: "https://www.linkedin.com" },
+      { name: "11. X / Twitter",  url: "https://x.com" },
+      { name: "12. Netflix",      url: "https://www.netflix.com" },
+      { name: "13. Spotify",      url: "https://open.spotify.com" },
+      { name: "14. Amazon",       url: "https://www.amazon.com" },
+      { name: "15. Notion",       url: "https://www.notion.so" },
+      { name: "16. Figma",        url: "https://www.figma.com" },
+      { name: "17. Canva",        url: "https://www.canva.com" },
+      { name: "18. WhatsApp",     url: "https://web.whatsapp.com" },
+      { name: "19. HackerNews",   url: "https://news.ycombinator.com" },
+      { name: "20. MDN Docs",     url: "https://developer.mozilla.org" },
+      { name: "21. ProductHunt",  url: "https://www.producthunt.com" }
+    ];
+
+    const grid = document.getElementById("buttonGrid");
+
+    links.forEach((item) => {
+      const a = document.createElement("a");
+      a.className = "btn";
+      a.href = item.url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.textContent = item.name;
+      grid.appendChild(a);
+    });
+  </script>
+
+</body>
+</html>
